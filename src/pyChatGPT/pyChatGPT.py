@@ -181,11 +181,13 @@ class ChatGPT:
 
         self.logger.debug('Initializing browser...')
         options = uc.ChromeOptions()
-        options.add_argument('--window-size=1024,768')
-        if self.__proxy:
-            options.add_argument(f'--proxy-server={self.__proxy}')
-        for arg in self.__chrome_args:
-            options.add_argument(arg)
+        #options.add_argument('--window-size=1024,768')
+        options.add_argument("--log-level=3")
+        options.add_argument("--headless")
+        options.add_argument("--disable-images")
+        options.add_argument("--mute-audio")
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage') 
         try:
             #self.driver = uc.Chrome(options=options)
             self.driver = uc.Chrome(ChromeDriverManager().install(),chrome_options=chrome_options)
